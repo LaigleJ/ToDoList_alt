@@ -11,7 +11,7 @@ class Tasks {
     updatedAt: string
 }
 
-class User {
+class Users {
     nickname: string
     email: string
 }
@@ -34,5 +34,14 @@ class Association {
     id_status: integer
     id_priority: integer
 }
+
+Users --o Tasks : create >
+Tasks "0..*"--"0..*" Users
+Tasks "0..*"--"1" Status
+Tasks "0..*"--"1" Priority
+Association "0..*"--"0..*" Users
+Association "0..*"--"1" Status
+Association "0..*"--"1" Priority
+
 
 @enduml
