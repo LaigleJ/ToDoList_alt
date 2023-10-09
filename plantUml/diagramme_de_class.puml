@@ -1,0 +1,38 @@
+@startuml
+
+class Tasks {
+    name: string
+    description: string
+    category: string
+    status: integer
+    priority: integer
+    deadline: string
+    createdAt: string
+    updatedAt: string
+}
+
+class User {
+    nickname: string
+    email: string
+}
+
+class Status {
+    onHold: boolean
+    inProgress: boolean
+    finish: boolean
+}
+
+class Priority {
+    low: boolean
+    average: boolean
+    high: boolean
+}
+
+class Association {
+    id_tacks: integer
+    id_user: integer
+    id_status: integer
+    id_priority: integer
+}
+
+@enduml
