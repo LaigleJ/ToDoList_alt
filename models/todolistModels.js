@@ -27,7 +27,7 @@ const Tasks = database.define('task', {
     deadline: {
         type: STRING(25)
     },
-    id_users: {
+    ids_users: {
         type: Sequelize.ARRAY(INTEGER)
     }
 });
