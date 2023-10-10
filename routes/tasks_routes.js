@@ -5,6 +5,6 @@ const routerTasks = express.Router();
 
 routerTasks.get('/tasks', getAllTasks);
 routerTasks.post('/tasks', createTasks);
-routerTasks.get('/tasks', getTask)
+routerTasks.get('/tasks/:id', getTask)
 
 export default routerTasks;

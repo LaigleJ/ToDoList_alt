@@ -1,0 +1,36 @@
+@hostname = http://localhost:3000/
+
+GET {{hostname}}tasks
+
+###
+
+POST {{hostname}}tasks
+Content-Type: application/json
+
+{
+    "name": "",
+    "description": "",
+    "category": "",
+    "status": "",
+    "property": "",
+    "deadline": "",
+    "ids_users": "" 
+}
+
+###
+
+GET {{hostname}}tasks/1
+
+###
+
+GET {{hostname}}users
+
+###
+
+POST {{hostname}}users
+Content-Type: application/json
+
+{
+    "nickname": "",
+    "email": ""
+}
