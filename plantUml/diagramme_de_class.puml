@@ -7,8 +7,6 @@ class Tasks {
     status: integer
     priority: integer
     deadline: string
-    createdAt: string
-    updatedAt: string
 }
 
 class Users {
@@ -16,32 +14,13 @@ class Users {
     email: string
 }
 
-class Status {
-    onHold: boolean
-    inProgress: boolean
-    finish: boolean
-}
-
-class Priority {
-    low: boolean
-    average: boolean
-    high: boolean
-}
-
 class Association {
     id_tacks: integer
     id_user: integer
-    id_status: integer
-    id_priority: integer
 }
 
 Users --o Tasks : create >
 Tasks "0..*"--"0..*" Users
-Tasks "0..*"--"1" Status
-Tasks "0..*"--"1" Priority
 Association "0..*"--"0..*" Users
-Association "0..*"--"1" Status
-Association "0..*"--"1" Priority
-
 
 @enduml
