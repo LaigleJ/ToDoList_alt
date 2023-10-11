@@ -1,7 +1,7 @@
-import Sequelize, { INTEGER, STRING } from "sequelize";
+import Sequelize from "sequelize";
 import database from '../util/database.js';
 
-const Tasks = database.define('task', {
+const Tasks = database.define('tasks', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -15,24 +15,27 @@ const Tasks = database.define('task', {
     description: {
         type: Sequelize.STRING(450)
     },
-    category: {
+    id_Category: {
         type: Sequelize.STRING(250)
     },
-    status: {
+    id_Status: {
         type: Sequelize.INTEGER
     },
-    property: {
+    id_Property: {
         type: Sequelize.INTEGER
     },
     deadline: {
-        type: STRING(25)
+        type: Sequelize.STRING(25)
+    },
+    author: {
+        type: Sequelize.STRING(25)
     },
     ids_users: {
         type: Sequelize.ARRAY(INTEGER)
     }
 });
 
-const Users = database.define('user', {
+const Users = database.define('users', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -46,10 +49,56 @@ const Users = database.define('user', {
     email: {
         type: Sequelize.STRING(50),
         allowNull: false
+    },
+    password: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+    }
+});
+
+const Category = database.define('category', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+    }
+});
+
+const Status = database.define('category', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING(50),
+        allowNull: false
+    }
+});
+
+const Priority = database.define('category', {
+    id: {
+        type: Sequelize.INTEGER,
+        autoIncrement: true,
+        allowNull: false,
+        primaryKey: true
+    },
+    name: {
+        type: Sequelize.STRING(50),
+        allowNull: false
     }
 });
 
 export {
     Users,
-    Tasks
+    Tasks,
+    Category,
+    Status,
+    Priority
 };
