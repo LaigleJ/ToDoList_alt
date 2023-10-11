@@ -1,4 +1,4 @@
-import Tasks from '../models/todolistModels.js';
+import {Tasks} from '../models/todolistModels.js';
 
 const getAllTasks = (req, res) => {
     Tasks.findAll()

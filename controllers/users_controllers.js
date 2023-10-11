@@ -1,4 +1,4 @@
-import Users from '../mosels/todolistModels.js';
+import {Users} from '../models/todolistModels.js';
 
 const getAllUsers = (req, res) => {
     Users.findAll()

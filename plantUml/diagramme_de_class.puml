@@ -3,24 +3,39 @@
 class Tasks {
     name: string
     description: string
-    category: string
-    status: integer
-    priority: integer
+    id_Category: integer
+    id_Status: integer
+    id_Priority: integer
     deadline: string
+    author: string
+    ids_Users: integer
 }
 
 class Users {
     nickname: string
     email: string
+    password: string
 }
 
-class Association {
-    id_tacks: integer
-    id_user: integer
+class Category {
+    name: string
 }
+
+class Status {
+    name: string
+}
+
+class Priority {
+    name: string
+}
+
+
 
 Users --o Tasks : create >
 Tasks "0..*"--"0..*" Users
-Association "0..*"--"0..*" Users
+Tasks "0..*"--"1" Category
+Tasks "0..*"--"1" Status
+Tasks "0..*"--"1" Priority
+
 
 @enduml
