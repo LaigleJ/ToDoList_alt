@@ -10,12 +10,12 @@ Content-Type: application/json
 {
     "name": "test 2",
     "description": "petit test de mon api",
-    "id_Category": 1,
-    "id_Status": 1,
+    "id_Category": "1",
+    "id_Status": "1",
     "id_Priority": 1,
     "deadline": "13 octobre",
     "author": "jérémy",
-    "ids_users": 1 
+    "ids_users": [1] 
 }
 
 ###

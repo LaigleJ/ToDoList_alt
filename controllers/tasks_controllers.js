@@ -16,7 +16,7 @@ const createTasks = (req, res) => {
     description: req.body.description,
     id_Category: req.body.category,
     id_Status: req.body.status,
-    id_Property: req.body.property,
+    id_Property: req.body.priority,
     deadline: req.body.deadline,
     author: req.body.author,
     ids_users: req.body.ids_users,

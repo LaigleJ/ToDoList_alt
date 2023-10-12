@@ -16,12 +16,12 @@ const Tasks = database.define('tasks', {
         type: Sequelize.STRING(450)
     },
     id_Category: {
-        type: Sequelize.STRING(250)
-    },
-    id_Status: {
         type: Sequelize.INTEGER
     },
-    id_Property: {
+    id_Status: {
+        type: Sequelize.INTEGER,
+    },
+    id_Priority: {
         type: Sequelize.INTEGER
     },
     deadline: {
