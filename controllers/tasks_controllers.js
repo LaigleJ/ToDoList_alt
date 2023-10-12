@@ -32,7 +32,7 @@ const createTasks = (req, res) => {
 
 const getTask = (req, res) => {
   const id_tasks = req.params.id;
-  Book.findAll({
+  Tasks.findAll({
     where: {
       id: id_tasks,
     },
@@ -66,7 +66,11 @@ const updateTasks = async (req, res) => {
             author: req.body.author,
             ids_users: req.body.ids_users,
           };
-          Tasks.update(tasks)
+          Tasks.update(tasks, {
+            where: {
+              name: name
+            }
+          })
             .then((result) => {
               res.json({ message: "Tasks updated", resultat: result });
             })

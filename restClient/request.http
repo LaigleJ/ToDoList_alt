@@ -8,18 +8,35 @@ POST {{hostname}}tasks
 Content-Type: application/json
 
 {
-    "name": "",
-    "description": "",
-    "category": "",
-    "status": "",
-    "property": "",
-    "deadline": "",
-    "ids_users": "" 
+    "name": "test 2",
+    "description": "petit test de mon api",
+    "id_Category": 1,
+    "id_Status": 1,
+    "id_Priority": 1,
+    "deadline": "13 octobre",
+    "author": "jérémy",
+    "ids_users": 1 
 }
 
 ###
 
 GET {{hostname}}tasks/1
+
+###
+
+PUT {{hostname}}tasks/test
+Content-Type: application/json
+
+{
+    "name": "test",
+    "description": "modification réussi",
+    "id_Category": 1,
+    "id_Status": 1,
+    "id_Priority": 1,
+    "deadline": "13 octobre",
+    "author": "jérémy",
+    "ids_users": 1 
+}
 
 ###
 
@@ -31,6 +48,46 @@ POST {{hostname}}users
 Content-Type: application/json
 
 {
-    "nickname": "",
-    "email": ""
+    "nickname": "Jérémy",
+    "email": "jeremy.alt@test.com",
+    "password": "j14031989L+"
+}
+
+###
+
+GET {{hostname}}status
+
+###
+
+POST {{hostname}}status
+Content-Type: application/json
+
+{
+    "name": "en attente"
+}
+
+###
+
+GET {{hostname}}priority
+
+###
+
+POST {{hostname}}priority
+Content-Type: application/json
+
+{
+    "name": "basse"
+}
+
+###
+
+GET {{hostname}}category
+
+###
+
+POST  {{hostname}}category
+Content-Type: application/json
+
+{
+    "name": "Dev"
 }

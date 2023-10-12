@@ -30,8 +30,8 @@ const Tasks = database.define('tasks', {
     author: {
         type: Sequelize.STRING(25)
     },
-    ids_users: {
-        type: Sequelize.ARRAY(INTEGER)
+    ids_Users: {
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
     }
 });
 
@@ -43,15 +43,15 @@ const Users = database.define('users', {
         primaryKey: true
     },
     nickname: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(15),
         allowNull: false
     },
     email: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(20),
         allowNull: false
     },
     password: {
-        type: Sequelize.STRING(50),
+        type: Sequelize.STRING(100),
         allowNull: false
     }
 });
@@ -69,7 +69,7 @@ const Category = database.define('category', {
     }
 });
 
-const Status = database.define('category', {
+const Status = database.define('status', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,
@@ -82,7 +82,7 @@ const Status = database.define('category', {
     }
 });
 
-const Priority = database.define('category', {
+const Priority = database.define('priority', {
     id: {
         type: Sequelize.INTEGER,
         autoIncrement: true,

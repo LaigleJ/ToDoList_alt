@@ -22,3 +22,8 @@ const getAllStatus = (req, res) => {
         console.log(error);
       });
   };
+
+  export {
+    getAllStatus,
+    createStatus
+  }

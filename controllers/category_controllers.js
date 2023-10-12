@@ -10,7 +10,7 @@ const getAllCategory = (req, res) => {
       });
   };
 
-  const createTasks = (req, res) => {
+  const createCategory = (req, res) => {
     const category = {
       name: req.body.name,
     };
@@ -25,5 +25,5 @@ const getAllCategory = (req, res) => {
 
   export {
     getAllCategory,
-    createTasks
+    createCategory
   };

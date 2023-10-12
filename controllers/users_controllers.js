@@ -12,38 +12,81 @@ const getAllUsers = (req, res) => {
 };
 
 const createUsers = async (req, res) => {
-  let data = req.body;
-
-  const mail = data.email;
-  const isUser = await Users.findAll({
+  const mail = req.body.email;
+  const isUser = await Users.findOne({
     where: {
       email: mail,
     },
   });
 
   if (!isUser) {
-    const nickName = data.nickname;
-    const eMail = data.email;
-    const passWord = data.password;
+    const nickName = req.body.nickname;
+    const eMail = req.body.email;
+    const passWord = req.body.password;
 
     if (nickName && eMail && passWord) {
-      const salt = await bcrypt.genSalt(20);
-      const hashedPassword = await bcrypt.hash(passWord, salt);
-
-      const user = {
-        nickname: nickName,
-        email: eMail,
-        password: hashedPassword,
-      };
-      Users.create(user)
-        .then((result) => {
-          res.json({ message: "user created", resultat: result });
-        })
-        .catch((error) => {
-          console.log(error);
+      if (!regexNickname(nickName)) {
+        res.json({ message: "the nickname entered is not correct" });
+      } else if (!regexEmail(eMail)) {
+        res.json({ message: "the email entered is not valid" });
+      } else if (!regexPassword(passWord)) {
+        res.json({
+          message: "the password does not comply with our security policy",
         });
+      } else {
+        const salt = await bcrypt.genSalt(20);
+        const hashedPassword = await bcrypt.hash(passWord, salt);
+
+        const user = {
+          nickname: nickName,
+
+          email: eMail,
+
+          password: hashedPassword,
+        };
+
+        Users.create(user)
+
+          .then((result) => {
+            res.json({ message: "User created", resultat: result });
+          })
+
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    } else {
+      res.json({ message: "Please fill in all fields" });
     }
+  } else {
+    res.json({ message: "Please verify your information!!" });
   }
 };
+
+function regexNickname(value) {
+  const lastName = /^[a-zA-Zéèàëï_-]{3,15}$/;
+  if (lastName.test(value)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function regexEmail(value) {
+  const email = /[^@ \t\r\n]+@[^@ \t\r\n]+\.[^@ \t\r\n]+/;
+  if (email.test(value)) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+function regexPassword(value) {
+  const password =
+    /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-+]).{8,}$/;
+  if (password.test(value)) {
+    return true;
+  } else return false;
+}
 
 export { getAllUsers, createUsers };
