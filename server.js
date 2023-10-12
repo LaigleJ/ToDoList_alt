@@ -4,7 +4,7 @@ import routerUsers from "./routes/users_routes.js";
 import routerTasks from "./routes/tasks_routes.js";
 import routerCategory from "./routes/category_routes.js";
 import routerStatus from "./routes/status_routes.js";
-import routerPriority from "/routes/priority_routes.js";
+import routerPriority from "./routes/priority_routes.js";
 import 'dotenv/config';
 
 async function main() {
