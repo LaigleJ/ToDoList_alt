@@ -111,7 +111,7 @@ const Tasks = database.define("tasks", {
   },
 });
 
-const UsersTasks = Sequelize.define('UsersTasks', {
+const UsersTasks = database.define('UsersTasks', {
     UsersId: {
         type: Sequelize.INTEGER,
         references: {
@@ -128,9 +128,12 @@ const UsersTasks = Sequelize.define('UsersTasks', {
     }
 })
 
-Category.belongsToMany(Tasks, { throught: CategoryTasks });
-Status.belongsToMany(Tasks, { throught: StatusTasks });
-Priority.belongsToMany(Tasks, { throught: PriorityTasks });
+Category.hasMany(Tasks);
+Tasks.belongsTo(Category);
+Status.hasMany(Tasks);
+Tasks.belongsTo(Status);
+Priority.hasMany(Tasks);
+Tasks.belongsTo(Priority);
 Users.belongsToMany(Tasks, { throught: UsersTasks });
 Category.belongsToMany(Users, { throught: UsersTasks });
 
