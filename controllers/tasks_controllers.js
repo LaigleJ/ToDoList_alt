@@ -39,7 +39,7 @@ const getTask = (req, res) => {
   })
     .then((tasks) => {
       if (!tasks) {
-        res.statut(404).json({ message: "Task not found" });
+        res.status(404).json({ message: "Task not found" });
       }
       res.json({ Tasks: tasks });
     })

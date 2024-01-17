@@ -133,8 +133,8 @@ Tasks.belongsTo(Category);
 Status.hasMany(Tasks);
 Tasks.belongsTo(Status);
 Priority.hasMany(Tasks);
-Tasks.belongsTo(Priority);
-Users.belongsToMany(Tasks, { throught: UsersTasks });
-Category.belongsToMany(Users, { throught: UsersTasks });
+Tasks.belongsToMany(Priority);
+Users.belongsToMany(Tasks, { through: UsersTasks });
+Category.belongsToMany(Users, { through: UsersTasks });
 
 export { Users, Tasks, Category, Status, Priority };
